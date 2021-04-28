@@ -80,6 +80,6 @@ public class PrendaTest {
   @Test
   public void unaTipoDePrendaPoseeUnNombre() {
     Prenda prenda = new Prenda(TipoPrenda.ZAPATO, Material.CUERO, "#804000", null);
-    Assertions.assertNull(prenda.getTipoPrenda().getNombre());
+    Assertions.assertNotNull(prenda.getTipoPrenda().getNombre());
   }
 }
