@@ -1,8 +1,12 @@
 # java-base-project
 
+# Nota!
+
+Solución principal se encuentra en el <a href="https://github.com/mnigliazzo/qmp-grupo10/tree/main">branch main</a>.
+
 # Diagrama de clases
 
-![class diagram](class-diagram-qmp.png)
+![class diagram](class-diagram-qmp-second-iteration.png)
 
 # Ejecutar tests
 
