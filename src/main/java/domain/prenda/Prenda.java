@@ -1,29 +1,25 @@
 package domain.prenda;
 
-import domain.exceptions.PrendaPoseeArgumentoInvalidoException;
-import domain.exceptions.TipoPrendaNoEsConsistenteConSuMaterialException;
-import domain.material.Material;
+import domain.material.TipoMaterial;
+import domain.material.Trama;
 
 public class Prenda {
 
   private TipoPrenda tipoPrenda;
-  private Material material;
+  private TipoMaterial tipoMaterial;
+  private Trama trama;
+  private String colorPrincipal;
+  private String colorSecundario;
+  // Convención: color principal y secundario de la forma: "#xxxxxx", siendo x un dígito
+  // hexadecimal.
 
-  public Prenda(TipoPrenda tipo) {
-    if (tipo == null) {
-      throw new PrendaPoseeArgumentoInvalidoException("La prenda posee argumentos invalidos");
-    }
-    this.tipoPrenda = tipo;
-  }
-
-  public void setMaterial(Material material) {
-    if (material == null) {
-      throw new PrendaPoseeArgumentoInvalidoException("Material posee argumento null");
-    } if (!material.esConsistente(this.tipoPrenda.getCategoria())) {
-      throw new TipoPrendaNoEsConsistenteConSuMaterialException(
-          "La prenda posee un tipo y material inconsistentes entre sí");
-    }
-    this.material = material;
+  public Prenda(TipoPrenda tipoPrenda, TipoMaterial tipoMaterial, Trama trama, String colorPrincipal,
+      String colorSecundario) {
+    this.tipoPrenda = tipoPrenda;
+    this.tipoMaterial = tipoMaterial;
+    this.trama = trama;
+    this.colorPrincipal = colorPrincipal;
+    this.colorSecundario = colorSecundario;
   }
 
   public TipoPrenda getTipoPrenda() {
@@ -34,7 +30,19 @@ public class Prenda {
     return this.tipoPrenda.getCategoria();
   }
 
-  public Material getMaterial() {
-    return this.material;
+  public TipoMaterial getTipoMaterial() {
+    return this.tipoMaterial;
+  }
+
+  public Trama getTrama() {
+    return this.trama;
+  }
+
+  public String getColorPrincipal() {
+    return this.colorPrincipal;
+  }
+
+  public String getColorSecundario() {
+    return this.colorSecundario;
   }
 }

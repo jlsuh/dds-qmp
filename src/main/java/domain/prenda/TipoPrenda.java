@@ -1,25 +1,45 @@
 package domain.prenda;
 
+import java.util.Collections;
+import java.util.HashSet;
+import domain.material.TipoMaterial;
+
 public enum TipoPrenda {
 
   // TipoPrenda posee impregnado por naturaleza una Categoria.
   // En caso de haber separado TipoPrenda y Categoria, dentro de Prenda, se hubiese superpuesto 2
   // veces la Categoria y hubiese resultado en repetición de valores computables.
   // El dominio permite dar una mayor cohesión, pues el sistema no requiere de cambios constantes.
-  ZAPATO("Zapato", Categoria.CALZADO),
-  CAMISAMANGACORTA("Camisa de manga corta", Categoria.PARTESUPERIOR),
-  PANTALON("Pantalon", Categoria.PARTEINFERIOR),
-  CHOMBA("Chomba", Categoria.PARTESUPERIOR),
-  ZAPATILLA("Zapatilla", Categoria.CALZADO),
-  CAMISA("Camisa", Categoria.PARTESUPERIOR),
-  PANTALONDEVESTIR("Pantalon de vestir", Categoria.PARTEINFERIOR);
+  ZAPATO("Zapato", Categoria.CALZADO,
+      tiposMaterialesValidos(TipoMaterial.CUERO,
+                              TipoMaterial.PLASTICO,
+                              TipoMaterial.CAUCHO)),
+  CAMISAMANGACORTA("Camisa de manga corta", Categoria.PARTESUPERIOR,
+      tiposMaterialesValidos(TipoMaterial.PIQUE,
+                              TipoMaterial.NYLON)),
+  PANTALON("Pantalon", Categoria.PARTEINFERIOR,
+      tiposMaterialesValidos(TipoMaterial.GABARDINA,
+                              TipoMaterial.ACETATO,
+                              TipoMaterial.ALGODON)),
+  CHOMBA("Chomba", Categoria.PARTESUPERIOR,
+      tiposMaterialesValidos(TipoMaterial.PIQUE)),
+  ZAPATILLA("Zapatilla", Categoria.CALZADO,
+      tiposMaterialesValidos(TipoMaterial.CAUCHO)),
+  CAMISA("Camisa", Categoria.PARTESUPERIOR,
+      tiposMaterialesValidos(TipoMaterial.ALGODON,
+                              TipoMaterial.NYLON)),
+  PANTALONDEVESTIR("Pantalon de vestir", Categoria.PARTEINFERIOR,
+      tiposMaterialesValidos(TipoMaterial.ALGODON));
 
   private String nombre;
   private Categoria categoria;
+  private HashSet<TipoMaterial> tiposMaterialesValidos = new HashSet<>();
 
-  private TipoPrenda(String nombre, Categoria categoria) {
+  private TipoPrenda(String nombre, Categoria categoria,
+      HashSet<TipoMaterial> tiposMaterialesValidos) {
     this.nombre = nombre;
     this.categoria = categoria;
+    this.tiposMaterialesValidos = tiposMaterialesValidos;
   }
 
   public String getNombre() {
@@ -29,4 +49,15 @@ public enum TipoPrenda {
   public Categoria getCategoria() {
     return this.categoria;
   }
+
+  private static HashSet<TipoMaterial> tiposMaterialesValidos(TipoMaterial... tiposMateriales) {
+    HashSet<TipoMaterial> categoriasValidas = new HashSet<>();
+    Collections.addAll(categoriasValidas, tiposMateriales);
+    return categoriasValidas;
+  }
+
+  public boolean esConsistente(TipoMaterial tipoMaterial) {
+    return this.tiposMaterialesValidos.contains(tipoMaterial);
+  }
+
 }

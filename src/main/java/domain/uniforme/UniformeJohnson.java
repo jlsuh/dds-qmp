@@ -1,7 +1,7 @@
 package domain.uniforme;
 
-import domain.material.Material;
 import domain.material.TipoMaterial;
+import domain.prenda.BorradorPrenda;
 import domain.prenda.Prenda;
 import domain.prenda.TipoPrenda;
 
@@ -9,25 +9,25 @@ public class UniformeJohnson extends Uniforme {
 
   @Override
   public void configurarParteSuperior() {
-    Prenda parteSuperior = new Prenda(TipoPrenda.CAMISA);
-    Material material = new Material("#ffffff", null, TipoMaterial.NYLON);
-    parteSuperior.setMaterial(material);
+    BorradorPrenda borradorPrenda = new BorradorPrenda();
+    Prenda parteSuperior = borradorPrenda.configurarTipoPrenda(TipoPrenda.CAMISA)
+        .configurarMaterial("#ffffff", null, TipoMaterial.NYLON, null).crearPrenda();
     super.setParteSuperior(parteSuperior);
   }
 
   @Override
   public void configurarParteInferior() {
-    Prenda parteInferior = new Prenda(TipoPrenda.PANTALONDEVESTIR);
-    Material material = new Material("#000000", null, TipoMaterial.ALGODON);
-    parteInferior.setMaterial(material);
+    BorradorPrenda borradorPrenda = new BorradorPrenda();
+    Prenda parteInferior = borradorPrenda.configurarTipoPrenda(TipoPrenda.PANTALONDEVESTIR)
+        .configurarMaterial("#000000", null, TipoMaterial.ALGODON, null).crearPrenda();
     super.setParteInferior(parteInferior);
   }
 
   @Override
   public void configurarCalzado() {
-    Prenda calzado = new Prenda(TipoPrenda.ZAPATO);
-    Material material = new Material("#000000", null, TipoMaterial.CAUCHO);
-    calzado.setMaterial(material);
+    BorradorPrenda borradorPrenda = new BorradorPrenda();
+    Prenda calzado = borradorPrenda.configurarTipoPrenda(TipoPrenda.ZAPATO)
+        .configurarMaterial("#000000", null, TipoMaterial.CAUCHO, null).crearPrenda();
     super.setCalzado(calzado);
   }
 

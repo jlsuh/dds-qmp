@@ -1,9 +1,5 @@
 # java-base-project
 
-# Diagrama de clases
-
-![class diagram](class-diagram-qmp.png)
-
 # Ejecutar tests
 
 ```

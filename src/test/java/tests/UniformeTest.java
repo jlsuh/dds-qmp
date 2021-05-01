@@ -21,15 +21,14 @@ public class UniformeTest {
   public void laPrendaSuperiorDelColegioSanJuanEsDeColorVerde() {
     UniformeSanJuanFactory usjf = new UniformeSanJuanFactory();
     Uniforme uniformeSanJuan = usjf.createUniforme();
-    Assertions.assertEquals(uniformeSanJuan.getParteSuperior().getMaterial().getColorPrincipal(),
-        "#008f39");
+    Assertions.assertEquals(uniformeSanJuan.getParteSuperior().getColorPrincipal(), "#008f39");
   }
 
   @Test
   public void laPrendaSuperiorDelColegioSanJuanEstaHechaDePique() {
     UniformeSanJuanFactory usjf = new UniformeSanJuanFactory();
     Uniforme uniformeSanJuan = usjf.createUniforme();
-    Assertions.assertEquals(uniformeSanJuan.getParteSuperior().getMaterial().getTipoMaterial(),
+    Assertions.assertEquals(uniformeSanJuan.getParteSuperior().getTipoMaterial(),
         TipoMaterial.PIQUE);
   }
 
@@ -45,15 +44,14 @@ public class UniformeTest {
   public void laPrendaInferiorDelColegioSanJuanEsDeColorGris() {
     UniformeSanJuanFactory usjf = new UniformeSanJuanFactory();
     Uniforme uniformeSanJuan = usjf.createUniforme();
-    Assertions.assertEquals(uniformeSanJuan.getParteInferior().getMaterial().getColorPrincipal(),
-        "#9b9b9b");
+    Assertions.assertEquals(uniformeSanJuan.getParteInferior().getColorPrincipal(), "#9b9b9b");
   }
 
   @Test
   public void laPrendaInferiorDelColegioSanJuanEstaHechaDeAcetato() {
     UniformeSanJuanFactory usjf = new UniformeSanJuanFactory();
     Uniforme uniformeSanJuan = usjf.createUniforme();
-    Assertions.assertEquals(uniformeSanJuan.getParteInferior().getMaterial().getTipoMaterial(),
+    Assertions.assertEquals(uniformeSanJuan.getParteInferior().getTipoMaterial(),
         TipoMaterial.ACETATO);
   }
 
@@ -68,16 +66,15 @@ public class UniformeTest {
   public void elCalzadoDelColegioSanJuanEsDeColorBlanco() {
     UniformeSanJuanFactory usjf = new UniformeSanJuanFactory();
     Uniforme uniformeSanJuan = usjf.createUniforme();
-    Assertions.assertEquals(uniformeSanJuan.getCalzado().getMaterial().getColorPrincipal(),
-        "#ffffff");
+
+    Assertions.assertEquals(uniformeSanJuan.getCalzado().getColorPrincipal(), "#ffffff");
   }
 
   @Test
   public void elCalzadoDelColegioSanJuanEstaHechaDeCaucho() {
     UniformeSanJuanFactory usjf = new UniformeSanJuanFactory();
     Uniforme uniformeSanJuan = usjf.createUniforme();
-    Assertions.assertEquals(uniformeSanJuan.getCalzado().getMaterial().getTipoMaterial(),
-        TipoMaterial.CAUCHO);
+    Assertions.assertEquals(uniformeSanJuan.getCalzado().getTipoMaterial(), TipoMaterial.CAUCHO);
   }
 
   @Test
@@ -91,15 +88,14 @@ public class UniformeTest {
   public void laPrendaSuperiorDelColegioJohnsonEsDeColorBlanco() {
     UniformeJohnsonFactory ujf = new UniformeJohnsonFactory();
     Uniforme uniformeJohnson = ujf.createUniforme();
-    Assertions.assertEquals(uniformeJohnson.getParteSuperior().getMaterial().getColorPrincipal(),
-        "#ffffff");
+    Assertions.assertEquals(uniformeJohnson.getParteSuperior().getColorPrincipal(), "#ffffff");
   }
 
   @Test
   public void laPrendaSuperiorDelColegioJohnsonEstaHechaDeNylon() {
     UniformeJohnsonFactory ujf = new UniformeJohnsonFactory();
     Uniforme uniformeJohnson = ujf.createUniforme();
-    Assertions.assertEquals(uniformeJohnson.getParteSuperior().getMaterial().getTipoMaterial(),
+    Assertions.assertEquals(uniformeJohnson.getParteSuperior().getTipoMaterial(),
         TipoMaterial.NYLON);
   }
 
@@ -115,15 +111,14 @@ public class UniformeTest {
   public void laPrendaInferiorDelColegioJohnsonEsDeColorNegro() {
     UniformeJohnsonFactory ujf = new UniformeJohnsonFactory();
     Uniforme uniformeJohnson = ujf.createUniforme();
-    Assertions.assertEquals(uniformeJohnson.getParteInferior().getMaterial().getColorPrincipal(),
-        "#000000");
+    Assertions.assertEquals(uniformeJohnson.getParteInferior().getColorPrincipal(), "#000000");
   }
 
   @Test
   public void laPrendaInferiorDelColegioJohnsonEstaHechaDeAlgodon() {
     UniformeJohnsonFactory ujf = new UniformeJohnsonFactory();
     Uniforme uniformeJohnson = ujf.createUniforme();
-    Assertions.assertEquals(uniformeJohnson.getParteInferior().getMaterial().getTipoMaterial(),
+    Assertions.assertEquals(uniformeJohnson.getParteInferior().getTipoMaterial(),
         TipoMaterial.ALGODON);
   }
 
@@ -138,16 +133,14 @@ public class UniformeTest {
   public void elCalzadoDelColegioJohnsonEsDeColorNegro() {
     UniformeJohnsonFactory ujf = new UniformeJohnsonFactory();
     Uniforme uniformeJohnson = ujf.createUniforme();
-    Assertions.assertEquals(uniformeJohnson.getCalzado().getMaterial().getColorPrincipal(),
-        "#000000");
+    Assertions.assertEquals(uniformeJohnson.getCalzado().getColorPrincipal(), "#000000");
   }
 
   @Test
   public void elCalzadoDelColegioJohnsonEstaHechaDeCaucho() {
     UniformeJohnsonFactory ujf = new UniformeJohnsonFactory();
     Uniforme uniformeJohnson = ujf.createUniforme();
-    Assertions.assertEquals(uniformeJohnson.getCalzado().getMaterial().getTipoMaterial(),
-        TipoMaterial.CAUCHO);
+    Assertions.assertEquals(uniformeJohnson.getCalzado().getTipoMaterial(), TipoMaterial.CAUCHO);
   }
 
 }
