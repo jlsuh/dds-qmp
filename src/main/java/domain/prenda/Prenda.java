@@ -13,8 +13,8 @@ public class Prenda {
   // Convención: color principal y secundario de la forma: "#xxxxxx", siendo x un dígito
   // hexadecimal.
 
-  public Prenda(TipoPrenda tipoPrenda, TipoMaterial tipoMaterial, Trama trama, String colorPrincipal,
-      String colorSecundario) {
+  public Prenda(TipoPrenda tipoPrenda, TipoMaterial tipoMaterial, Trama trama,
+      String colorPrincipal, String colorSecundario) {
     this.tipoPrenda = tipoPrenda;
     this.tipoMaterial = tipoMaterial;
     this.trama = trama;

@@ -30,6 +30,8 @@ public enum TipoPrenda {
                               TipoMaterial.NYLON)),
   PANTALONDEVESTIR("Pantalon de vestir", Categoria.PARTEINFERIOR,
       tiposMaterialesValidos(TipoMaterial.ALGODON));
+  // Mediante la redundancia mínima procuramos mantener en un solo lugar
+  // los valores computables.
 
   private String nombre;
   private Categoria categoria;

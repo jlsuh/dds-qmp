@@ -3,7 +3,7 @@ package domain.uniforme;
 public class UniformeSanJuanFactory extends UniformeFactory {
 
   @Override
-  public Uniforme instanceUniforme() {
+  public Uniforme crearUniforme() {
     return new UniformeSanJuan();
   }
 
