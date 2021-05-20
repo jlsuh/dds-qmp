@@ -8,27 +8,27 @@ import domain.prenda.TipoPrenda;
 public class UniformeSanJuanFactory extends UniformeFactory {
 
   @Override
-  public void configurarParteSuperior(Uniforme uniforme) {
+  public Prenda configurarParteSuperior() {
     BorradorPrenda borradorPrenda = new BorradorPrenda();
     Prenda parteSuperior = borradorPrenda.configurarTipoPrenda(TipoPrenda.CHOMBA)
         .configurarMaterial("#008f39", null, TipoMaterial.PIQUE, null).crearPrenda();
-    uniforme.setParteSuperior(parteSuperior);
+    return parteSuperior;
   }
 
   @Override
-  public void configurarParteInferior(Uniforme uniforme) {
+  public Prenda configurarParteInferior() {
     BorradorPrenda borradorPrenda = new BorradorPrenda();
     Prenda parteInferior = borradorPrenda.configurarTipoPrenda(TipoPrenda.PANTALON)
         .configurarMaterial("#9b9b9b", null, TipoMaterial.ACETATO, null).crearPrenda();
-    uniforme.setParteInferior(parteInferior);
+    return parteInferior;
   }
 
   @Override
-  public void configurarCalzado(Uniforme uniforme) {
+  public Prenda configurarCalzado() {
     BorradorPrenda borradorPrenda = new BorradorPrenda();
     Prenda calzado = borradorPrenda.configurarTipoPrenda(TipoPrenda.ZAPATILLA)
         .configurarMaterial("#ffffff", null, TipoMaterial.CAUCHO, null).crearPrenda();
-    uniforme.setCalzado(calzado);
+    return calzado;
   }
 
 }

@@ -1,30 +1,23 @@
 package domain.uniforme;
 
-public abstract class UniformeFactory {
+import domain.prenda.Prenda;
+
+public abstract class UniformeFactory { // Un engendro de factory
 
   public Uniforme crearUniforme() {
-    Uniforme uniforme = this.instanciarUniforme();
-    this.configurarParteSuperior(uniforme);
-    this.configurarParteInferior(uniforme);
-    this.configurarCalzado(uniforme);
-    return uniforme;
-    // Antes: el uniforme parecía que tenía la responsabilidad de crearse a sí mismo.
+    return new Uniforme(this.configurarParteSuperior(), this.configurarParteInferior(),
+        this.configurarCalzado());
+    // Antes: el uniforme tenía la responsabilidad de crearse a sí mismo.
     // Ahora: las propias fábricas poseen la responsabilidad de configurar a uniforme.
   }
+  // TODO Detractores: hay lógica repetida en los métodos de configuración (parteSuperior,
+  // parteInferior & calzado). La lógica repetida yace en que los 3 métodos poseen el mismo orden de
+  // llamada a los métodos.
 
-  private Uniforme instanciarUniforme() {
-    return new Uniforme();
-    // Se eliminaron UniformeJohnson&UniformeSanJuan. En definitiva es un Uniforme, lo que varía es
-    // la configuración interna (parteInferior, parteSuperior y calzado).
-    // Si hubiésemos dejado UniformeJohnson&UniformeSanJuan en existencia, se hubiesen vuelto en
-    // objetos anémicos.
-  }
+  public abstract Prenda configurarParteSuperior();
 
-  // No sé qué tan correcto sea pasarle como parámetro a un objeto que va a configurar
-  public abstract void configurarParteSuperior(Uniforme uniforme);
+  public abstract Prenda configurarParteInferior();
 
-  public abstract void configurarParteInferior(Uniforme uniforme);
-
-  public abstract void configurarCalzado(Uniforme uniforme);
+  public abstract Prenda configurarCalzado();
 
 }
