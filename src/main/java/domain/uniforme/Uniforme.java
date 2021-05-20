@@ -2,7 +2,7 @@ package domain.uniforme;
 
 import domain.prenda.Prenda;
 
-public abstract class Uniforme {
+public class Uniforme {
 
   private Prenda parteSuperior;
   private Prenda parteInferior;
@@ -32,10 +32,10 @@ public abstract class Uniforme {
     this.calzado = calzado;
   }
 
-  public abstract void configurarParteSuperior();
-
-  public abstract void configurarParteInferior();
-
-  public abstract void configurarCalzado();
+//  public abstract void configurarParteSuperior();
+//
+//  public abstract void configurarParteInferior();
+//
+//  public abstract void configurarCalzado();
 
 }
