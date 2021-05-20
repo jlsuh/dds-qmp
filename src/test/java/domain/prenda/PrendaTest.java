@@ -1,4 +1,4 @@
-package tests;
+package domain.prenda;
 
 import java.util.HashSet;
 import org.junit.jupiter.api.Assertions;
