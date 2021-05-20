@@ -2,14 +2,14 @@ package domain.uniforme;
 
 public abstract class UniformeFactory {
 
-  public Uniforme createUniforme() {
-    Uniforme uniforme = this.crearUniforme();
+  public Uniforme crearUniforme() {
+    Uniforme uniforme = this.instanciarUniforme();
     uniforme.configurarParteSuperior();
     uniforme.configurarParteInferior();
     uniforme.configurarCalzado();
     return uniforme;
   }
 
-  protected abstract Uniforme crearUniforme();
+  protected abstract Uniforme instanciarUniforme();
 
 }
