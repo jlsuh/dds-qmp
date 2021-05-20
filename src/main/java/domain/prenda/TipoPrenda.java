@@ -15,41 +15,56 @@ public enum TipoPrenda {
    * que tiene un componente de resolver una única cosa. Se dice que mientras más cosas sepa hacer
    * un componente es menos cohesivo. Creo que lo que vos querés decir ahí es sobre consistencia o
    * redundancia de datos. Tampoco entiendo bien cómo se relaciona con los "cambios constantes".
+   * Aclaramos que con "cambios constantes" nos referimos a que el requerimiento no es volátil.
    */
   ZAPATO("Zapato", Categoria.CALZADO,
       tiposMaterialesValidos(TipoMaterial.CUERO,
                               TipoMaterial.PLASTICO,
-                              TipoMaterial.CAUCHO)),
+                              TipoMaterial.CAUCHO),
+          new Double("30")),
   CAMISAMANGACORTA("Camisa de manga corta", Categoria.PARTESUPERIOR,
       tiposMaterialesValidos(TipoMaterial.PIQUE,
-                              TipoMaterial.NYLON)),
+                              TipoMaterial.NYLON),
+          new Double("30")),
   PANTALON("Pantalon", Categoria.PARTEINFERIOR,
       tiposMaterialesValidos(TipoMaterial.GABARDINA,
                               TipoMaterial.ACETATO,
-                              TipoMaterial.ALGODON)),
+                              TipoMaterial.ALGODON),
+          new Double("12")),
   CHOMBA("Chomba", Categoria.PARTESUPERIOR,
-      tiposMaterialesValidos(TipoMaterial.PIQUE)),
+      tiposMaterialesValidos(TipoMaterial.PIQUE),
+          new Double("14")),
   ZAPATILLA("Zapatilla", Categoria.CALZADO,
-      tiposMaterialesValidos(TipoMaterial.CAUCHO)),
+      tiposMaterialesValidos(TipoMaterial.CAUCHO),
+          new Double("10")),
   CAMISA("Camisa", Categoria.PARTESUPERIOR,
       tiposMaterialesValidos(TipoMaterial.ALGODON,
-                              TipoMaterial.NYLON)),
+                              TipoMaterial.NYLON),
+          new Double("10")),
   PANTALONDEVESTIR("Pantalon de vestir", Categoria.PARTEINFERIOR,
-      tiposMaterialesValidos(TipoMaterial.ALGODON));
-  // Mediante la redundancia mínima procuramos mantener en un solo lugar
-  // los valores computables.
+      tiposMaterialesValidos(TipoMaterial.ALGODON),
+          new Double("12")),
+  REMERAMANGALARGA("Remera de mangas largas", Categoria.PARTESUPERIOR,
+      tiposMaterialesValidos(TipoMaterial.ALGODON),
+          new Double("20")),
+  BRAZALETE("Brazalete", Categoria.ACCESORIO,
+      tiposMaterialesValidos(TipoMaterial.PLASTICO),
+          new Double("11"));
+
   // Mediante la redundancia mínima procuramos mantener en un solo lugar
   // los valores computables.
 
   private String nombre;
   private Categoria categoria;
   private HashSet<TipoMaterial> tiposMaterialesValidos = new HashSet<>();
+  private Double temperaturaAdecuada;
 
   private TipoPrenda(String nombre, Categoria categoria,
-      HashSet<TipoMaterial> tiposMaterialesValidos) {
+      HashSet<TipoMaterial> tiposMaterialesValidos, Double temperaturaAdecuada) {
     this.nombre = nombre;
     this.categoria = categoria;
     this.tiposMaterialesValidos = tiposMaterialesValidos;
+    this.temperaturaAdecuada = temperaturaAdecuada;
   }
 
   public String getNombre() {
@@ -58,6 +73,10 @@ public enum TipoPrenda {
 
   public Categoria getCategoria() {
     return this.categoria;
+  }
+
+  public Double getTemperaturaAdecuadaEnCelsius() {
+    return this.temperaturaAdecuada;
   }
 
   private static HashSet<TipoMaterial> tiposMaterialesValidos(TipoMaterial... tiposMateriales) {

@@ -1,5 +1,8 @@
 package domain.prenda;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Sugerencia {
 
   Prenda prendaSuperior;
@@ -13,6 +16,15 @@ public class Sugerencia {
     this.prendaInferior = prendaInferior;
     this.calzado = calzado;
     this.accesorio = accesorio;
+  }
+
+  public List<Prenda> getListadoPrenda() {
+    List<Prenda> prendas = new ArrayList<>();
+    prendas.add(prendaSuperior);
+    prendas.add(prendaInferior);
+    prendas.add(calzado);
+    prendas.add(accesorio);
+    return prendas;
   }
 
   public Prenda getPrendaSuperior() {
