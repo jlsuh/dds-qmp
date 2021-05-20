@@ -32,10 +32,4 @@ public class Uniforme {
     this.calzado = calzado;
   }
 
-//  public abstract void configurarParteSuperior();
-//
-//  public abstract void configurarParteInferior();
-//
-//  public abstract void configurarCalzado();
-
 }

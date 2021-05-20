@@ -10,6 +10,12 @@ public enum TipoPrenda {
   // En caso de haber separado TipoPrenda y Categoria, dentro de Prenda, se hubiese superpuesto 2
   // veces la Categoria y hubiese resultado en repetición de valores computables.
   // El dominio permite dar una mayor cohesión, pues el sistema no requiere de cambios constantes.
+  /*
+   * Correcciones recibidas respecto a lo enunciado anteriormente: OJO que cohesión es la capacidad
+   * que tiene un componente de resolver una única cosa. Se dice que mientras más cosas sepa hacer
+   * un componente es menos cohesivo. Creo que lo que vos querés decir ahí es sobre consistencia o
+   * redundancia de datos. Tampoco entiendo bien cómo se relaciona con los "cambios constantes".
+   */
   ZAPATO("Zapato", Categoria.CALZADO,
       tiposMaterialesValidos(TipoMaterial.CUERO,
                               TipoMaterial.PLASTICO,
@@ -30,6 +36,8 @@ public enum TipoPrenda {
                               TipoMaterial.NYLON)),
   PANTALONDEVESTIR("Pantalon de vestir", Categoria.PARTEINFERIOR,
       tiposMaterialesValidos(TipoMaterial.ALGODON));
+  // Mediante la redundancia mínima procuramos mantener en un solo lugar
+  // los valores computables.
   // Mediante la redundancia mínima procuramos mantener en un solo lugar
   // los valores computables.
 
