@@ -10,7 +10,7 @@ import apisDelClima.StubServicioMeteorologicoAccuWeather;
 import domain.material.TipoMaterial;
 import domain.material.Trama;
 
-public class StubGeneradorSugerenciasTest {
+public class GeneradorSugerenciasTest {
 
   String buenosAiresArgentina;
   StubServicioMeteorologicoAccuWeather stubServicioMeteorologicoAccuWeather;
@@ -43,7 +43,7 @@ public class StubGeneradorSugerenciasTest {
         .filtrarPrendasAcordeATemperatura(prendasNoFiltradas, buenosAiresArgentina).size(), 2);
   }
 
-  @Test // TODO: Stub reloaded
+  @Test
   public void generadorDeSugerenciasDaSugerenciasParaBuenosAires() {
     List<Prenda> prendasNoFiltradas = new ArrayList<>();
     Prenda remeraMangaLarga = new BorradorPrenda().configurarTipoPrenda(TipoPrenda.REMERAMANGALARGA)
@@ -75,20 +75,4 @@ public class StubGeneradorSugerenciasTest {
         .assertTrue(stubGeneradorSugerenciasAccuWeather.generarSugerenciasDesde(prendasNoFiltradas)
             .get(0).getListadoPrenda().containsAll(prendasElectas));
   }
-
-  // /*
-  // * @Test public void algo() { ServiciosDelClimaLocator sdcl = new ServiciosDelClimaLocator();
-  // * System.out.println(sdcl.getTipoDelServicioDelClima(new AccuWeatherAPI())); }
-  // */
-  //
-  // /*
-  // * Funcan
-  // *
-  // * @Test public void conversion() { Assertions.assertEquals(sgs.convertirTemperatura("F", 52.0),
-  // * 125.6); }
-  // *
-  // * @Test public void noConversion() { Assertions.assertEquals(sgs.convertirTemperatura("C",
-  // 52.0),
-  // * 52.0); }
-  // */
 }
