@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import domain.exceptions.LaRecomendacionNoEsUnaRecomendacionAceptadaPreviamenteException;
-import domain.exceptions.NoExistePrendaEnGuardaRropasException;
+import domain.exceptions.NoExistePrendaEnGuardarropasException;
 import domain.guardarropa.CriterioGuardarropa;
 import domain.guardarropa.Guardarropas;
 import domain.guardarropa.TipoPrivacidadGuardarropa;
@@ -135,7 +135,7 @@ public class GuardarropaTest {
   @Test
   public void noSePuedeAceptarRecomendacionesDeQuitarUnaPrendaSiDichaPrendaNoExisteEnElGuardarropas() {
     listaGuardarropas.get(0).recomendarPrenda(pantalonDeVestir, TipoRecomendacion.QUITAR);
-    Assertions.assertThrows(NoExistePrendaEnGuardaRropasException.class,
+    Assertions.assertThrows(NoExistePrendaEnGuardarropasException.class,
         () -> guardarropas.aceptarRecomendacion(guardarropas.getRecomendacionesPrenda().get(0)));
   }
 

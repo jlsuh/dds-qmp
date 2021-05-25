@@ -3,7 +3,6 @@ package domain.guardarropa;
 import java.util.ArrayList;
 import java.util.List;
 import domain.exceptions.LaRecomendacionNoEsUnaRecomendacionAceptadaPreviamenteException;
-import domain.exceptions.NoExistePrendaEnGuardaRropasException;
 import domain.prenda.Prenda;
 
 public class Guardarropas {
@@ -20,50 +19,51 @@ public class Guardarropas {
   }
 
   public void recomendarPrenda(Prenda prenda, TipoRecomendacion tipoRecomendacion) {
-    RecomendacionPrenda nuevaRecomendacion = tipoRecomendacion == TipoRecomendacion.AGREGAR
-        ? new RecomendacionPrenda(TipoRecomendacion.AGREGAR, prenda)
-        : new RecomendacionPrenda(TipoRecomendacion.QUITAR, prenda);
+    RecomendacionPrenda nuevaRecomendacion = tipoRecomendacion.crearRecomendacion(prenda);
+    // RecomendacionPrenda nuevaRecomendacion = tipoRecomendacion == TipoRecomendacion.AGREGAR
+    // ? new RecomendacionPrenda(TipoRecomendacion.AGREGAR, prenda)
+    // : new RecomendacionPrenda(TipoRecomendacion.QUITAR, prenda);
     recomendacionesPrenda.add(nuevaRecomendacion);
   }
 
   public void aceptarRecomendacion(RecomendacionPrenda recomendacion) {
     Prenda prendaRecomendada = recomendacion.getPrendaRecomendada();
-    if (sonDeIgualTipoDeRecomendacion(recomendacion.getTipoRecomendacion(),
-        TipoRecomendacion.AGREGAR)) {
-      this.agregarPrendaAGuardarropas(prendaRecomendada);
-    } else if (sonDeIgualTipoDeRecomendacion(recomendacion.getTipoRecomendacion(),
-        TipoRecomendacion.QUITAR)) {
-      if (!this.prendas.contains(prendaRecomendada)) {
-        throw new NoExistePrendaEnGuardaRropasException(
-            "La prenda que se quiere quitar no existe en el guardarropas");
-      }
-      this.quitarPrendaDeGuardarropas(prendaRecomendada);
-    }
+    recomendacion.getTipoRecomendacion().responderAAceptacionDeRecomendacion(this,
+        prendaRecomendada);
+    // if (recomendacion.getTipoRecomendacion().equals(TipoRecomendacion.AGREGAR)) {
+    // this.agregarPrendaAGuardarropas(prendaRecomendada);
+    // } else if (recomendacion.getTipoRecomendacion().equals(TipoRecomendacion.QUITAR)) {
+    // if (!this.prendas.contains(prendaRecomendada)) {
+    // throw new NoExistePrendaEnGuardarropasException(
+    // "La prenda que se desea quitar no existe en el guardarropas");
+    // }
+    // this.quitarPrendaDeGuardarropas(prendaRecomendada);
+    // }
     recomendacion.setEstadoRecomendacion(EstadoRecomendacion.ACEPTADA);
+  }
+
+  public boolean contienePrenda(Prenda prenda) {
+    return this.prendas.contains(prenda);
   }
 
   public void deshacerRecomendacionAceptada(RecomendacionPrenda recomendacionPrenda) {
     EstadoRecomendacion estadoRecomendacion = recomendacionPrenda.getEstadoRecomendacion();
-    if (estadoRecomendacion != EstadoRecomendacion.ACEPTADA) {
+    if (!estadoRecomendacion.equals(EstadoRecomendacion.ACEPTADA)) {
       throw new LaRecomendacionNoEsUnaRecomendacionAceptadaPreviamenteException(
-          "La recomendación no es una recomendación aceptada previamente");
+          "La recomendación no es una recomendación que se haya aceptado previamente");
     }
-    this.deshacerSegunTipo(recomendacionPrenda);
+    this.deshacerRecomendacion(recomendacionPrenda);
   }
 
-  public void deshacerSegunTipo(RecomendacionPrenda recomendacionADeshacer) {
+  public void deshacerRecomendacion(RecomendacionPrenda recomendacionADeshacer) {
     Prenda prendaARevertir = recomendacionADeshacer.getPrendaRecomendada();
-    if (this.sonDeIgualTipoDeRecomendacion(recomendacionADeshacer.getTipoRecomendacion(),
-        TipoRecomendacion.AGREGAR)) {
-      this.quitarPrendaDeGuardarropas(prendaARevertir);
-    } else {
-      this.agregarPrendaAGuardarropas(prendaARevertir);
-    }
-  }
-
-  private boolean sonDeIgualTipoDeRecomendacion(TipoRecomendacion unaRecomendacion,
-      TipoRecomendacion otraRecomendacion) {
-    return unaRecomendacion.equals(otraRecomendacion);
+    recomendacionADeshacer.getTipoRecomendacion().responderADeshacerRecomendacion(this,
+        prendaARevertir);
+    // if (recomendacionADeshacer.getTipoRecomendacion().equals(TipoRecomendacion.AGREGAR)) {
+    // this.quitarPrendaDeGuardarropas(prendaARevertir);
+    // } else {
+    // this.agregarPrendaAGuardarropas(prendaARevertir);
+    // }
   }
 
   public void rechazarRecomendacion(RecomendacionPrenda recomendacionAQuitar) {
