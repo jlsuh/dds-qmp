@@ -1,4 +1,4 @@
-package service;
+package apisDelClima;
 
 import java.util.*;
 

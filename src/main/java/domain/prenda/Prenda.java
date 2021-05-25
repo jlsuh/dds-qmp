@@ -1,5 +1,6 @@
 package domain.prenda;
 
+import java.math.BigDecimal;
 import domain.material.TipoMaterial;
 import domain.material.Trama;
 
@@ -44,5 +45,9 @@ public class Prenda {
 
   public String getColorSecundario() {
     return this.colorSecundario;
+  }
+
+  public boolean esAdecuadoParaElClima(BigDecimal valorTemperatura) {
+    return this.tipoPrenda.esAdecuadoParaElClima(valorTemperatura);
   }
 }
