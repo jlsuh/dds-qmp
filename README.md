@@ -2,7 +2,7 @@
 
 # Diagrama de clases
 
-![class diagram](class-diagram-qmp.png)
+![class diagram](class-diagram-qmp5.png)
 
 # Ejecutar tests
 
