@@ -14,14 +14,20 @@ public class GeneradorSugerenciasTest {
 
   String buenosAiresArgentina;
   StubServicioMeteorologicoAccuWeather stubServicioMeteorologicoAccuWeather;
-  StubGeneradorSugerencias stubGeneradorSugerenciasAccuWeather;
+  StubGeneradorSugerencias stubGeneradorSugerencias;
 
   @BeforeEach
   public void inicializarContexto() {
     buenosAiresArgentina = "Buenos Aires, Argentina";
     stubServicioMeteorologicoAccuWeather = new StubServicioMeteorologicoAccuWeather();
-    stubGeneradorSugerenciasAccuWeather =
+    stubGeneradorSugerencias =
         new StubGeneradorSugerencias(new StubServicioMeteorologicoAccuWeather());
+  }
+
+  @Test
+  public void enBuenosAiresHacenCincuentaYSieteGradosFahrenheits() {
+    Assertions.assertEquals(stubServicioMeteorologicoAccuWeather.getValorTemperaturaEnUnidades("F",
+        buenosAiresArgentina), new BigDecimal(57));
   }
 
   @Test
@@ -39,7 +45,7 @@ public class GeneradorSugerenciasTest {
         .configurarMaterial("#000000", null, TipoMaterial.ALGODON, Trama.RAYADA).crearPrenda());
     prendasNoFiltradas.add(new BorradorPrenda().configurarTipoPrenda(TipoPrenda.CAMISA)
         .configurarMaterial("#000000", null, TipoMaterial.NYLON, Trama.ESTAMPADO).crearPrenda());
-    Assertions.assertEquals(stubGeneradorSugerenciasAccuWeather
+    Assertions.assertEquals(stubGeneradorSugerencias
         .filtrarPrendasAcordeATemperatura(prendasNoFiltradas, buenosAiresArgentina).size(), 2);
   }
 
@@ -71,8 +77,7 @@ public class GeneradorSugerenciasTest {
     prendasElectas.add(zapatilla);
     prendasElectas.add(brazalete);
 
-    Assertions
-        .assertTrue(stubGeneradorSugerenciasAccuWeather.generarSugerenciasDesde(prendasNoFiltradas)
-            .get(0).getListadoPrenda().containsAll(prendasElectas));
+    Assertions.assertTrue(stubGeneradorSugerencias.generarSugerenciasDesde(prendasNoFiltradas)
+        .get(0).getListadoPrenda().containsAll(prendasElectas));
   }
 }

@@ -17,23 +17,23 @@ public class ServicioMeteorologicoAccuWeather implements ServicioMeteorologico {
     return this.convertirTemperatura(unidad, new BigDecimal(this.getValorTemperatura(ciudad)));
   }
 
-  private String getValorTemperatura(String ciudad) {
+  protected String getValorTemperatura(String ciudad) {
     return String.valueOf(this.getTemperatura(ciudad).get("Value"));
   }
-  
-  private Map<String, Object> getTemperatura(String ciudad) {
+
+  protected Map<String, Object> getTemperatura(String ciudad) {
     return (Map<String, Object>) this.getCondicionesClimaticas(ciudad).get("Temperature");
   }
 
-  private BigDecimal convertirTemperatura(String tipoUnidades, BigDecimal valor) {
+  protected BigDecimal convertirTemperatura(String tipoUnidades, BigDecimal valor) {
     return tipoUnidades.equals("F") ? this.celsiusAFahrenheits(valor) : fahrenheitsACelsius(valor);
   }
 
-  private BigDecimal fahrenheitsACelsius(BigDecimal temperatura) {
-    return (temperatura.subtract(new BigDecimal(32))).divide(new BigDecimal(1.8));
+  protected BigDecimal fahrenheitsACelsius(BigDecimal temperatura) {
+    return (temperatura.subtract(new BigDecimal(32))).divide(BigDecimal.valueOf(1.8));
   }
 
-  private BigDecimal celsiusAFahrenheits(BigDecimal temperatura) {
-    return temperatura.multiply(new BigDecimal(1.8)).add(new BigDecimal(32));
+  protected BigDecimal celsiusAFahrenheits(BigDecimal temperatura) {
+    return (temperatura.multiply(BigDecimal.valueOf(1.8)).add(new BigDecimal(32)));
   }
 }
