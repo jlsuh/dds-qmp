@@ -3,14 +3,14 @@ package domain.prenda;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sugerencia {
+public class Atuendo {
 
   Prenda prendaSuperior;
   Prenda prendaInferior;
   Prenda calzado;
   Prenda accesorio;
 
-  public Sugerencia(Prenda prendaSuperior, Prenda prendaInferior, Prenda calzado,
+  public Atuendo(Prenda prendaSuperior, Prenda prendaInferior, Prenda calzado,
       Prenda accesorio) {
     this.prendaSuperior = prendaSuperior;
     this.prendaInferior = prendaInferior;

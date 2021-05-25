@@ -18,11 +18,11 @@ public class StubGeneradorSugerencias implements GeneradorSugerencias {
   // TODO: Como usuarie de QuéMePongo, quiero poder recibir sugerencias de atuendos que tengan una
   // prenda para cada categoría, aunque a futuro podrán tener más (Ej.: Una remera, un pantalón,
   // zapatos y un gorro). Suponemos que este requerimiento está resuelto en este código.
-  public List<Sugerencia> generarSugerenciasDesde(List<Prenda> prendasAptas) {
+  public List<Atuendo> generarSugerenciasDesde(List<Prenda> prendasAptas) {
     List<Prenda> prendasFiltradas =
         this.filtrarPrendasAcordeATemperaturaCiudad(prendasAptas, "Buenos Aires, Argentina");
-    List<Sugerencia> listaSugerencias = new LinkedList<>();
-    listaSugerencias.add(new Sugerencia(prendasFiltradas.get(0), prendasFiltradas.get(1),
+    List<Atuendo> listaSugerencias = new LinkedList<>();
+    listaSugerencias.add(new Atuendo(prendasFiltradas.get(0), prendasFiltradas.get(1),
         prendasFiltradas.get(2), prendasFiltradas.get(3)));
     return listaSugerencias;
   }
