@@ -25,10 +25,6 @@ public class Guardarropas {
     this.recomendacionesAceptadas.add(recomendacion);
   }
 
-  public boolean contienePrenda(Prenda prenda) {
-    return this.prendas.contains(prenda);
-  }
-
   public void deshacerRecomendacionAceptada(RecomendacionPrenda recomendacionAceptada) {
     recomendacionAceptada.deshacerRecomendacion(this);
     this.recomendacionesAceptadas.remove(recomendacionAceptada);
