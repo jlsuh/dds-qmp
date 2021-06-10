@@ -5,7 +5,7 @@ import domain.guardarropa.Guardarropas;
 
 public class Usuario {
 
-  List<Guardarropas> guardarropas;
+  private List<Guardarropas> guardarropas;
 
   public Usuario(List<Guardarropas> guardarropas) {
     this.guardarropas = guardarropas;
