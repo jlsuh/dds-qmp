@@ -1,6 +1,9 @@
 package apisDelClima;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ServicioMeteorologicoAccuWeather implements ServicioMeteorologico {
@@ -35,5 +38,14 @@ public class ServicioMeteorologicoAccuWeather implements ServicioMeteorologico {
 
   protected BigDecimal celsiusAFahrenheits(BigDecimal temperatura) {
     return (temperatura.multiply(BigDecimal.valueOf(1.8)).add(new BigDecimal(32)));
+  }
+
+  public final Map<String, List<String>> getAlerts(String ciudad) {
+    HashMap<String, List<String>> currentAlerts = new HashMap<String, List<String>>();
+    List<String> types = new ArrayList<>();
+    types.add("STORM");
+    types.add("HAIL");
+    currentAlerts.put("CurrentAlerts", types);
+    return currentAlerts;
   }
 }

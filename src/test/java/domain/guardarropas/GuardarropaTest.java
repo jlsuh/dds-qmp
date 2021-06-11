@@ -78,8 +78,8 @@ public class GuardarropaTest {
     listaGuardarropasUsuario1.add(guardarropas2);
 
     // Instanciación de usuario
-    usuario1 = new Usuario(listaGuardarropasUsuario1);
-    usuario2 = new Usuario(listaGuardarropasUsuario2);
+    usuario1 = new Usuario(listaGuardarropasUsuario1, "example1@gmail.com");
+    usuario2 = new Usuario(listaGuardarropasUsuario2, "example2@gmail.com");
   }
 
   @Test
